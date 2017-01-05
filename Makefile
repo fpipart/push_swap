@@ -6,11 +6,11 @@
 #    By: fpipart <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/03 13:07:23 by fpipart           #+#    #+#              #
-#    Updated: 2017/01/04 16:39:10 by fpipart          ###   ########.fr        #
+#    Updated: 2017/01/05 12:51:04 by fpipart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES1 = checker.c ft_atoi_checker.c
+FILES1 = checker.c ft_atoi_checker.c stack_utilities.c #rules.c
 
 FILES2 =
 

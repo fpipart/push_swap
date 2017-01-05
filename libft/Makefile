@@ -6,7 +6,7 @@
 #    By: fpipart <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/10 14:21:45 by fpipart           #+#    #+#              #
-#    Updated: 2017/01/03 17:52:13 by fpipart          ###   ########.fr        #
+#    Updated: 2017/01/05 14:12:43 by fpipart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ CFILES = conversion_diouxx.c conversion_type.c ft_printf.c	\
 
 OBJ = $(CFILES:%.c=%.o)
 
-FLAGS = -Wextra -Werror -Wall
+FLAGS = -g -Wextra -Werror -Wall
 
 NAME = libft.a
 

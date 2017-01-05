@@ -6,14 +6,14 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 13:42:32 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/04 15:14:20 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/05 14:07:09 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE  9999
+# define BUFF_SIZE 10 
 
 # include <string.h>
 # include <unistd.h>
