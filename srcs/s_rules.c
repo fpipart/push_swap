@@ -49,4 +49,7 @@ int		sb(t_stack **a, t_stack **b)
 int		ss(t_stack **a, t_stack **b)
 {
 	if ((sa(a, b) + sb(a, b)) == 2)
+		return (1);
+	else
+		return (0);
 }
