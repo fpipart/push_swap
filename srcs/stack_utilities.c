@@ -6,13 +6,13 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 09:17:33 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/05 12:46:52 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/06 14:37:01 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack		*ps_fisrtelem(int data)
+t_stack		*ps_firstelem(int data)
 {
 	t_stack	*elem;
 
@@ -53,11 +53,27 @@ int			stack_size(t_stack **stack)
 	{
 		i++;
 		tmp = (*stack)->next;
-		while (tmp != (*stack) && i < 10)
+		while (tmp != (*stack))
 		{
 			tmp = tmp->next;
 			i++;
 		}
 	}
 	return (i);
+}
+
+void		print_stack(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	if (stack)
+	{
+		tmp = stack->next;
+		printf("%5d\n", stack->data);
+		while (tmp != stack)
+		{
+			printf("%5d\n", tmp->data);
+			tmp = tmp->next;
+		}
+	}
 }

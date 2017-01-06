@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 16:49:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/05 12:21:30 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/06 18:34:00 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,30 @@ typedef struct		s_rules
 }					t_rules;
 
 int					ft_atoi_checker(char *str, char **error);
-t_rules				*rules(void);
+void				rules(t_rules **conv);
 
-t_stack				*ps_fisrtelem(int data);
+t_stack				*ps_firstelem(int data);
 int					ps_addelem(t_stack **stack, int data);
 int					stack_size(t_stack **stack);
+void				print_stack(t_stack *stack);
+
+void				swap(t_stack **stack);
+int					sa(t_stack **a, t_stack **b);
+int					sb(t_stack **a, t_stack **b);
+int					ss(t_stack **a, t_stack **b);
+
+void				push(t_stack **s1, t_stack **s2);
+int					pa(t_stack **a, t_stack **b);
+int					pb(t_stack **a, t_stack **b);
+
+void				rotate(t_stack **stack);
+int					ra(t_stack **a, t_stack **b);
+int					rb(t_stack **a, t_stack **b);
+int					rr(t_stack **a, t_stack **b);
+
+void				reverse_rotate(t_stack **stack);
+int					rra(t_stack **a, t_stack **b);
+int					rrb(t_stack **a, t_stack **b);
+int					rrr(t_stack **a, t_stack **b);
 
 #endif

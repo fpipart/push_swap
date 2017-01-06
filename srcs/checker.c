@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:03:59 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/05 14:21:04 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/06 17:44:08 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_stack	*fill_tab(int argc, char **argv)
 	int		i;
 
 	i = 1;
-	a = ps_fisrtelem(ft_atoi_checker(argv[1], &error));
+	a = ps_firstelem(ft_atoi_checker(argv[1], &error));
 	while (i < argc - 1)
 	{
 		ps_addelem(&a, ft_atoi_checker(argv[i + 1], &error));
@@ -42,7 +42,16 @@ static int	call_rule(char *rule, t_stack **a, t_stack **b, t_rules op[11])
 	while (i < 11)
 	{
 		if (ft_strequ(op[i].s, rule))
+		{
+			if (!op[i].f(a, b))
+				return (0);
+			ft_putendl("Stack a :");
+			print_stack(*a);
+			ft_putendl("Stack b :");
+			print_stack(*b);
+			return (1);
 			return (op[i].f(a, b));
+		}
 		i++;
 	}
 	return (0);
@@ -54,7 +63,7 @@ static int	extract_rules(t_stack *a, t_stack *b)
 	char	*line;
 
 	op = (t_rules*)malloc(sizeof(t_rules) * 11);
-//	op = rules();
+	rules(&op);
 	while (get_next_line(0, &line))
 	{
 		if (!call_rule(line, &a, &b, op))
@@ -76,14 +85,15 @@ int		main(int argc, char **argv)
 	b = NULL;
 	if (argc > 1)
 		if (!(a = fill_tab(argc, argv)))
-			ft_putstr("error");
+			ft_putendl_fd("error", 2);
 	if (a)
 	{
-		printf("%5d%5d%5d%5d\n", a->data, a->next->data, a->next->next->data, 
+/*		printf("%5d%5d%5d%5d\n", a->data, a->next->data, a->next->next->data, 
 				stack_size(&a));
+*/		print_stack(a);
 		result = extract_rules(a, b);
 		if (result == -1)
-			ft_putstr("error");
+			ft_putendl_fd("error (result = -1)", 2);
 	}
 	return (0);
 }

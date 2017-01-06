@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-FILES1 = checker.c ft_atoi_checker.c stack_utilities.c #rules.c
+FILES1 = checker.c ft_atoi_checker.c stack_utilities.c rules.c		\
+		s_rules.c p_rules.c r_rules.c rr_rules.c
 
 FILES2 =
 
@@ -22,7 +23,7 @@ CFILES2 = $(FILES2:%=./srcs/%)
 
 OBJ2 = $(FILES2:%.c=%.o)
 
-FLAGS = -Wextra -Werror -Wall
+FLAGS = -g -Wextra -Werror -Wall
 
 NAME1 = checker
 

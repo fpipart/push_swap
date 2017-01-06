@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:31:16 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/05 14:47:29 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/06 14:16:11 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int		sa(t_stack **a, t_stack **b)
 		swap(a);
 		return (1);
 	}
-	else
-		return (0);
+	return (0);
 }
 
 int		sb(t_stack **a, t_stack **b)
@@ -42,14 +41,12 @@ int		sb(t_stack **a, t_stack **b)
 		swap(b);
 		return (1);
 	}
-	else
-		return (0);
+	return (0);
 }
-;
+
 int		ss(t_stack **a, t_stack **b)
 {
 	if ((sa(a, b) + sb(a, b)) == 2)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
