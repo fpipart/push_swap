@@ -21,17 +21,34 @@ static t_stack	*fill_tab(int argc, char **argv)
 	char	**line;
 	char	*error;
 	int		i;
+	int		x;
 
 	i = 1;
 	a = ps_firstelem(ft_atoi_checker(argv[1], &error));
 	while (i < argc - 1)
 	{
-		ps_addelem(&a, ft_atoi_checker(argv[i + 1], &error));
+		if (check_doublons(&x, ft_atoi_checker(argv[i + 1], &error), a))
+			return (NULL);
+		ps_addelem(&a, x);
 		if (ft_strequ(error, "error") == 1)
 			return (NULL);
 		i++;
 	}
 	return (a);
+}
+
+int		check_doublons(int *x, int new, t_stack *a)
+{
+	if (a)
+	{
+		while (a != a->next)
+		{
+			if (new == a->data)
+				return (0);
+			a = a->next;
+		}
+	}
+	return (1);
 }
 
 static int	call_rule(char *rule, t_stack **a, t_stack **b, t_rules op[11])
