@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 09:17:33 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/06 14:37:01 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/08 15:22:17 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,29 @@ void		print_stack(t_stack *stack)
 	if (stack)
 	{
 		tmp = stack->next;
-		printf("%5d\n", stack->data);
+		ft_printf("%5d\n", stack->data);
 		while (tmp != stack)
 		{
 			printf("%5d\n", tmp->data);
 			tmp = tmp->next;
 		}
 	}
+}
+
+int			ps_is_sort(t_stack *a)
+{
+	t_stack *tmp;
+
+	if (a)
+	{
+		tmp = a;
+		while (tmp->next != a)
+		{
+		//	printf("%4d%4d\n", tmp->next->data, tmp->data);
+			if (tmp->next->data <= tmp->data)
+				return (0);
+			tmp = tmp->next;
+		}
+	}
+	return (1);
 }

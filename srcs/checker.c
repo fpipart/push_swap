@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:03:59 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/06 17:44:08 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/08 15:28:31 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,40 @@ static t_stack	*fill_tab(int argc, char **argv)
 	int		i;
 	int		x;
 
-	i = 1;
-	a = ps_firstelem(ft_atoi_checker(argv[1], &error));
-	while (i < argc - 1)
+	i = argc - 2;
+	x = 0;
+	a = ps_firstelem(ft_atoi_checker(argv[argc - 1], &error));
+	while (i > 0)
 	{
-		if (check_doublons(&x, ft_atoi_checker(argv[i + 1], &error), a))
+		if (!check_doublons(&x, ft_atoi_checker(argv[i], &error), a))
 			return (NULL);
 		ps_addelem(&a, x);
 		if (ft_strequ(error, "error") == 1)
 			return (NULL);
-		i++;
+		i--;
 	}
 	return (a);
 }
 
 int		check_doublons(int *x, int new, t_stack *a)
 {
+	t_stack *tmp;
+
+	*x = new;
 	if (a)
 	{
-		while (a != a->next)
+		if (a->next != a)
+			tmp = a->next;
+		else
+			tmp = a;
+		while (a != tmp)
 		{
-			if (new == a->data)
+			if (new == tmp->data)
 				return (0);
-			a = a->next;
+			tmp = tmp->next;
 		}
+		if (new == tmp->data)
+			return (0);
 	}
 	return (1);
 }
@@ -85,9 +95,15 @@ static int	extract_rules(t_stack *a, t_stack *b)
 	{
 		if (!call_rule(line, &a, &b, op))
 			return (-1);
+		if (ft_strequ(line, "\n"))
+			break ;
 	}
-//	if (ft_is_sort(tab.a, tab.size))
-//		return (1);
+	if (ps_is_sort(a) && !b)
+	{
+		ft_putendl("OK");
+		return (1);
+	}
+	ft_putendl("KO");
 	return (0);
 }
 
@@ -102,12 +118,12 @@ int		main(int argc, char **argv)
 	b = NULL;
 	if (argc > 1)
 		if (!(a = fill_tab(argc, argv)))
-			ft_putendl_fd("error", 2);
+			ft_putendl_fd("error", 1);
 	if (a)
 	{
 /*		printf("%5d%5d%5d%5d\n", a->data, a->next->data, a->next->next->data, 
 				stack_size(&a));
-*/		print_stack(a);
+*/		//print_stack(a);
 		result = extract_rules(a, b);
 		if (result == -1)
 			ft_putendl_fd("error (result = -1)", 2);
