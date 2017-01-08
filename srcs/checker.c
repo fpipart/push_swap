@@ -6,15 +6,14 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:03:59 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/08 15:28:31 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/08 19:53:37 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-/* Verifier que tous les caracteres sont des + ou - au depart puis nombre */
-static t_stack	*fill_tab(int argc, char **argv)
+t_stack	*fill_tab(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*new;
@@ -93,10 +92,10 @@ static int	extract_rules(t_stack *a, t_stack *b)
 	rules(&op);
 	while (get_next_line(0, &line))
 	{
+		if (ft_strequ(line, ""))
+			break ;
 		if (!call_rule(line, &a, &b, op))
 			return (-1);
-		if (ft_strequ(line, "\n"))
-			break ;
 	}
 	if (ps_is_sort(a) && !b)
 	{
@@ -118,7 +117,7 @@ int		main(int argc, char **argv)
 	b = NULL;
 	if (argc > 1)
 		if (!(a = fill_tab(argc, argv)))
-			ft_putendl_fd("error", 1);
+			ps_error();
 	if (a)
 	{
 /*		printf("%5d%5d%5d%5d\n", a->data, a->next->data, a->next->next->data, 
@@ -126,7 +125,7 @@ int		main(int argc, char **argv)
 */		//print_stack(a);
 		result = extract_rules(a, b);
 		if (result == -1)
-			ft_putendl_fd("error (result = -1)", 2);
+			ps_error();
 	}
 	return (0);
 }

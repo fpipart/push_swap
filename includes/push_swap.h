@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 16:49:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/08 14:39:50 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/08 18:12:44 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_rules
 }					t_rules;
 
 int					check_doublons(int *x, int neww, t_stack *a);
+t_stack				*fill_tab(int argc, char **argv);
 
 int					ft_atoi_checker(char *str, char **error);
 void				rules(t_rules **conv);
@@ -45,6 +46,8 @@ int					ps_addelem(t_stack **stack, int data);
 int					stack_size(t_stack **stack);
 void				print_stack(t_stack *stack);
 int					ps_is_sort(t_stack *a);
+
+void				ps_error(void);
 
 void				swap(t_stack **stack);
 int					sa(t_stack **a, t_stack **b);

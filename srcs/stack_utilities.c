@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 09:17:33 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/08 15:22:17 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/08 16:28:15 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int			ps_is_sort(t_stack *a)
 		tmp = a;
 		while (tmp->next != a)
 		{
-		//	printf("%4d%4d\n", tmp->next->data, tmp->data);
 			if (tmp->next->data <= tmp->data)
 				return (0);
 			tmp = tmp->next;
