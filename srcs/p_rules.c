@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 14:29:16 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/06 17:33:55 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/09 18:34:39 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,20 @@ void	push(t_stack **s1, t_stack **s2)
 	}
 }
 
-int		pa(t_stack **a, t_stack **b)
+int		pa(t_stack **a, t_stack **b, t_disp d)
 {
+	if (d.print)
+		ft_putendl("pa");
 	if (!*b)
 		return (0);
 	push(b, a);
 	return (1);
 }
 
-int		pb(t_stack **a, t_stack **b)
+int		pb(t_stack **a, t_stack **b, t_disp d)
 {
+	if (d.print)
+		ft_putendl("pb");
 	if (!*a)
 		return (0);
 	push(a, b);

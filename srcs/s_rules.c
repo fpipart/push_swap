@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:31:16 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/06 14:16:11 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/09 18:32:30 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	swap(t_stack **stack)
 	}
 }
 
-int		sa(t_stack **a, t_stack **b)
+int		sa(t_stack **a, t_stack **b, t_disp d)
 {
+	if (d.print)
+		ft_putendl("sa");
 	if ((*a) && (*a)->next && (*a) != (*a)->next)
 	{
 		swap(a);
@@ -34,8 +36,10 @@ int		sa(t_stack **a, t_stack **b)
 	return (0);
 }
 
-int		sb(t_stack **a, t_stack **b)
+int		sb(t_stack **a, t_stack **b, t_disp d)
 {
+	if (d.print)
+		ft_putendl("sb");
 	if ((*b) && (*b)->next && (*b) != (*b)->next)
 	{
 		swap(b);
@@ -44,9 +48,12 @@ int		sb(t_stack **a, t_stack **b)
 	return (0);
 }
 
-int		ss(t_stack **a, t_stack **b)
+int		ss(t_stack **a, t_stack **b, t_disp d)
 {
-	if ((sa(a, b) + sb(a, b)) == 2)
+	if (d.print)
+		ft_putendl("ss");
+	d.print = 0;
+	if ((sa(a, b, d) + sb(a, b, d)) == 2)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 16:49:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/08 18:12:44 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/09 18:45:11 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,21 @@ typedef struct		s_stack
 typedef struct		s_rules
 {
 	char			*s;
-	int				(*f)(t_stack **a, t_stack **b);
+	int				(*f)(t_stack **a, t_stack **b, char *str);
 }					t_rules;
+
+typedef struct		s_disp
+{
+	int				print;
+	int				verbose;
+	int				size_a;
+	int				phase;
+}					t_disp;
+
+int					push_swap(t_stack *a, t_stack *b, int size);
+int					min_position(t_stack *a);
+int					selection_sort(t_stack **a, t_stack **b, t_disp d);
+
 
 int					check_doublons(int *x, int neww, t_stack *a);
 t_stack				*fill_tab(int argc, char **argv);
@@ -50,22 +63,22 @@ int					ps_is_sort(t_stack *a);
 void				ps_error(void);
 
 void				swap(t_stack **stack);
-int					sa(t_stack **a, t_stack **b);
-int					sb(t_stack **a, t_stack **b);
-int					ss(t_stack **a, t_stack **b);
+int					sa(t_stack **a, t_stack **b, t_disp d);
+int					sb(t_stack **a, t_stack **b, t_disp d);
+int					ss(t_stack **a, t_stack **b, t_disp d);
 
 void				push(t_stack **s1, t_stack **s2);
-int					pa(t_stack **a, t_stack **b);
-int					pb(t_stack **a, t_stack **b);
+int					pa(t_stack **a, t_stack **b, t_disp d);
+int					pb(t_stack **a, t_stack **b, t_disp d);
 
 void				rotate(t_stack **stack);
-int					ra(t_stack **a, t_stack **b);
-int					rb(t_stack **a, t_stack **b);
-int					rr(t_stack **a, t_stack **b);
+int					ra(t_stack **a, t_stack **b, t_disp d);
+int					rb(t_stack **a, t_stack **b, t_disp d);
+int					rr(t_stack **a, t_stack **b, t_disp d);
 
 void				reverse_rotate(t_stack **stack);
-int					rra(t_stack **a, t_stack **b);
-int					rrb(t_stack **a, t_stack **b);
-int					rrr(t_stack **a, t_stack **b);
+int					rra(t_stack **a, t_stack **b, t_disp d);
+int					rrb(t_stack **a, t_stack **b, t_disp d);
+int					rrr(t_stack **a, t_stack **b, t_disp d);
 
 #endif
