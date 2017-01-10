@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:07:45 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/10 12:35:33 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/10 18:46:35 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,32 @@ void	ps_error(void)
 	ft_putendl_fd("error", 2);
 }
 
-char	**fill_with_strsplit(char **argv, int argc)
+char	**fill_with_strsplit(char **argv, int *i)
 {
 	char **tab;
 
 	tab = ft_strsplit(argv[1], ' ');
-	
+	*i = ft_wordcount(argv[1], ' ') - 2; 
+	return (tab);
 }
 
-t_stack	*fill_tab(int argc, char **argv)
+t_stack	*fill_tab(int argc, char **argv, t_disp *d)
 {
 	t_stack	*a;
 	char	*error;
 	int		i;
 	int		x;
 
-	if (argc == 2)
-		argv = fill_with_strsplit(argv, argc);
 	i = argc - 2;
+	if (argc == 2)
+		argv = fill_with_strsplit(argv, &i);
 	x = 0;
-	a = ps_firstelem(ft_atoi_checker(argv[argc - 1], &error));
-	while (i > 0)
+	a = ps_firstelem(ft_atoi_checker(argv[i + 1], &error));
+	while (i > 0 || (i >= 0 && argc == 2))
 	{
-		if (!check_doublons(&x, ft_atoi_checker(argv[i], &error), a))
+		if ((i == 1 || (argc == 2 && i == 0)))
+			d->verbose = ft_strequ(argv[i], "-v");
+		else if (!check_doublons(&x, ft_atoi_checker(argv[i], &error), a))
 			return (NULL);
 		ps_addelem(&a, x);
 		if (ft_strequ(error, "error") == 1)
