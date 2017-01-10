@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 16:49:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/09 18:45:11 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/10 11:10:15 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ typedef struct		s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-typedef struct		s_rules
-{
-	char			*s;
-	int				(*f)(t_stack **a, t_stack **b, char *str);
-}					t_rules;
-
 typedef struct		s_disp
 {
 	int				print;
@@ -42,6 +36,12 @@ typedef struct		s_disp
 	int				size_a;
 	int				phase;
 }					t_disp;
+
+typedef struct		s_rules
+{
+	char			*s;
+	int				(*f)(t_stack **a, t_stack **b, t_disp d);
+}					t_rules;
 
 int					push_swap(t_stack *a, t_stack *b, int size);
 int					min_position(t_stack *a);
@@ -61,6 +61,7 @@ void				print_stack(t_stack *stack);
 int					ps_is_sort(t_stack *a);
 
 void				ps_error(void);
+void				print_stack_state(t_stack *a, t_stack *b, t_disp d);
 
 void				swap(t_stack **stack);
 int					sa(t_stack **a, t_stack **b, t_disp d);

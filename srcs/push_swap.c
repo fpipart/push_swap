@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 17:57:43 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/09 18:45:19 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/10 12:35:35 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		push_swap(t_stack *a, t_stack *b, int size)
 	d.size_a = stack_size(&a);
 	d.phase = 1;
 	selection_sort(&a, &b, d);
-	print_stack(a);
+	//print_stack(a);
 	return (0);
 }
 
