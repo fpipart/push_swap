@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 16:49:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/10 18:33:37 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/11 19:30:57 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_disp
 	int				print;
 	int				verbose;
 	int				size_a;
+	int				size_b;
 	int				phase;
 }					t_disp;
 
@@ -44,12 +45,8 @@ typedef struct		s_rules
 }					t_rules;
 
 int					push_swap(t_stack *a, t_stack *b, t_disp d);
-int					min_position(t_stack *a);
 int					selection_sort(t_stack **a, t_stack **b, t_disp d);
-
-
-int					check_doublons(int *x, int neww, t_stack *a);
-t_stack				*fill_tab(int argc, char **argv, t_disp *d);
+int					seg_selection_sort(t_stack **a, t_stack **b, t_disp d);
 
 int					ft_atoi_checker(char *str, char **error);
 void				rules(t_rules **conv);
@@ -60,8 +57,26 @@ int					stack_size(t_stack **stack);
 void				print_stack(t_stack *stack);
 int					ps_is_sort(t_stack *a);
 
+/*
+ *		utilities.c
+ * */
+
 void				ps_error(void);
+char				**fill_with_strsplit(char **argv, int *i);
 void				print_stack_state(t_stack *a, t_stack *b, t_disp d);
+int					check_doublons(int *x, int neww, t_stack *a);
+t_stack				*fill_tab(int argc, char **argv, t_disp *d);
+
+
+/*
+ *		utilities_bis.c
+ * */
+
+int					min_value(t_stack *a);
+int					min_position(t_stack *a);
+int					max_value(t_stack *a);
+int					max_position(t_stack *a);
+void				ps_delstack(t_stack **a);
 
 void				swap(t_stack **stack);
 int					sa(t_stack **a, t_stack **b, t_disp d);

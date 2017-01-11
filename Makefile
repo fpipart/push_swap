@@ -6,7 +6,7 @@
 #    By: fpipart <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/03 13:07:23 by fpipart           #+#    #+#              #
-#    Updated: 2017/01/11 14:42:31 by fpipart          ###   ########.fr        #
+#    Updated: 2017/01/11 18:54:25 by fpipart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 
 FILES2 = push_swap.c selection_sort.c ft_atoi_checker.c				\
 		stack_utilities.c rules.c s_rules.c p_rules.c r_rules.c		\
-		rr_rules.c utilities.c
+		rr_rules.c utilities.c utilities_bis.c seg_selection_sort.c
 
 CFILES1 = $(FILES1:%=./srcs/%)
 
