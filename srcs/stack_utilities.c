@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/05 09:17:33 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/10 11:13:10 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/11 12:49:24 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int			ps_addelem(t_stack **stack, int data)
 		(*stack)->prev = new;
 		*stack = new;
 	}
+	else
+		*stack = ps_firstelem(data);
 	return (0);
 }
 

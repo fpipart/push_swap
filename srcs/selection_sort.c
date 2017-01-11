@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 14:34:13 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/10 11:42:19 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/11 15:09:28 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int			selection_sort(t_stack **a, t_stack **b, t_disp d)
 				ra(a, b, d) : rra(a, b, d);
 	//printf("position minimum -> %d, size = %d\n", min_position(*a), d.size_a);
 	}
-	//print_stack_state(*a, *b, d);
+	if (d.verbose)
+		print_stack_state(*a, *b, d);
 	//printf("position minimum -> %d\n", min_position(*a));
 	selection_sort(a, b, d);
 	return (0);
