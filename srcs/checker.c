@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:03:59 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/09 17:15:35 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 17:16:50 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 
 static int	call_rule(char *rule, t_stack **a, t_stack **b, t_rules op[11])
 {
-	int i;
+	int		i;
+	t_disp	d;
 
+	d.print = 0;
+	d.verbose = 0;
 	i = 0;
 	while (i < 11)
 	{
 		if (ft_strequ(op[i].s, rule))
 		{
-			if (!op[i].f(a, b))
+			if (!op[i].f(a, b, d))
 				return (0);
-			ft_putendl("Stack a :");
-			print_stack(*a);
-			ft_putendl("Stack b :");
-			print_stack(*b);
 			return (1);
-			return (op[i].f(a, b));
+			//return (op[i].f(a, b));
 		}
 		i++;
 	}
@@ -63,13 +62,14 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack *b;
+	t_disp	d;
 	char	*line;
 	int		result;
 
 	a = NULL;
 	b = NULL;
 	if (argc > 1)
-		if (!(a = fill_tab(argc, argv)))
+		if (!(a = fill_tab(argc, argv, &d)))
 			ps_error();
 	if (a)
 	{

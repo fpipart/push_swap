@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 16:49:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 13:01:01 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 16:38:37 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int					selection_sort(t_stack **a, t_stack **b, t_disp d);
  *		seg_selection_sort.c
  * */
 
-int					seg_selection_sort(t_stack **a, t_stack **b, t_disp d, int end);
-int					find_segment(t_stack *a, int seg, t_disp d);
+int					seg_selection_sort(t_stack **a, t_stack **b, t_disp d);
 
 int					ft_atoi_checker(char *str, char **error);
 void				rules(t_rules **conv);
@@ -83,6 +82,15 @@ int					min_position(t_stack *a);
 int					max_value(t_stack *a);
 int					max_position(t_stack *a);
 void				ps_delstack(t_stack **a);
+
+/*
+ *		utilities_ters.c
+ * */
+
+int					find_segment(t_stack *a, int seg, t_disp d);
+int					closest_min_pos_next(t_stack *a, int mins);
+int					closest_min_pos_prev(t_stack *a, int mins);
+
 
 void				swap(t_stack **stack);
 int					sa(t_stack **a, t_stack **b, t_disp d);

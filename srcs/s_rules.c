@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 18:31:16 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/09 18:32:30 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 15:46:58 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		sa(t_stack **a, t_stack **b, t_disp d)
 		swap(a);
 		return (1);
 	}
+	if (d.verbose)
+		print_stack_state(*a, *b, d);
 	return (0);
 }
 
@@ -45,6 +47,8 @@ int		sb(t_stack **a, t_stack **b, t_disp d)
 		swap(b);
 		return (1);
 	}
+	if (d.verbose)
+		print_stack_state(*a, *b, d);
 	return (0);
 }
 
@@ -55,5 +59,7 @@ int		ss(t_stack **a, t_stack **b, t_disp d)
 	d.print = 0;
 	if ((sa(a, b, d) + sb(a, b, d)) == 2)
 		return (1);
+	if (d.verbose)
+		print_stack_state(*a, *b, d);
 	return (0);
 }

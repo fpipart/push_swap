@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 17:57:43 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 12:58:04 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 17:35:37 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ int		push_swap(t_stack *a, t_stack *b, t_disp d)
 	if (d.size_a <= 30)
 		selection_sort(&a, &b, d);
 	else
-	{
-		seg_selection_sort(&a, &b, d, 0);
-	}
-	//print_stack(a);
+		seg_selection_sort(&a, &b, d);
+	print_stack_state(a, b, d);
+	ps_delstack(&a);
 	return (0);
 }
 
@@ -42,9 +41,6 @@ int		main(int argc, char **argv)
 		if (!(a = fill_tab(argc, argv, &d)))
 			ps_error();
 	if (a)
-	{
 		push_swap(a, b, d);
-	}
-//	ps_delstack(&a);
 	return (0);
 }

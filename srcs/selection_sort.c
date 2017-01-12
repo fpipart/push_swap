@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 14:34:13 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/11 18:08:49 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 17:42:36 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ int			sort_three(t_stack **a, t_stack **b, t_disp d)
 	return (1);
 }
 
+static void	next_push(t_stack **a, t_stack **b, t_disp *d)
+{
+	if (min_position(*a) <= d->size_a / 2 && min_position(*a) != 0)
+	{
+		while (min_position(*a) != 0)
+			ra(a, b, *d);
+	}
+	while (min_position(*a) != 0)
+		rra(a, b, *d);
+	if (min_position(*a) == 0)
+	{
+		d->size_a--;
+		pb(a, b, *d);
+	}
+}
+
 int			selection_sort(t_stack **a, t_stack **b, t_disp d)
 {
 	if (d.phase == 2 && !(*b))
@@ -45,18 +61,10 @@ int			selection_sort(t_stack **a, t_stack **b, t_disp d)
 		d.phase = 2;
 	else if (d.size_a == 3)
 		sort_three(a, b, d);
+	else if (d.size_a == 2)
+		sa(a, b, d);
 	else if (d.phase == 1)
-	{
-		if (min_position(*a) == 0)
-		{
-			d.size_a--;
-			pb(a, b, d);
-		}
-		else
-			min_position(*a) <= d.size_a / 2 ? ra(a, b, d) : rra(a, b, d);
-	}
-	if (d.verbose)
-		print_stack_state(*a, *b, d);
+		next_push(a, b, &d);
 	selection_sort(a, b, d);
 	return (0);
 }

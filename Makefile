@@ -6,16 +6,17 @@
 #    By: fpipart <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/03 13:07:23 by fpipart           #+#    #+#              #
-#    Updated: 2017/01/11 18:54:25 by fpipart          ###   ########.fr        #
+#    Updated: 2017/01/12 17:34:00 by fpipart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#FILES1 = checker.c ft_atoi_checker.c stack_utilities.c rules.c		\
+FILES1 = checker.c ft_atoi_checker.c stack_utilities.c rules.c		\
 		s_rules.c p_rules.c r_rules.c rr_rules.c utilities.c
 
 FILES2 = push_swap.c selection_sort.c ft_atoi_checker.c				\
 		stack_utilities.c rules.c s_rules.c p_rules.c r_rules.c		\
-		rr_rules.c utilities.c utilities_bis.c seg_selection_sort.c
+		rr_rules.c utilities.c utilities_bis.c seg_selection_sort.c	\
+		utilities_ters.c
 
 CFILES1 = $(FILES1:%=./srcs/%)
 
@@ -25,7 +26,7 @@ CFILES2 = $(FILES2:%=./srcs/%)
 
 OBJ2 = $(FILES2:%.c=%.o)
 
-FLAGS = -g -Wextra -Werror -Wall
+FLAGS = -Wextra -Werror -Wall
 
 NAME1 = checker
 
@@ -36,9 +37,9 @@ all: $(NAME1)
 
 $(NAME1):
 	make -C ./libft/
-#	gcc $(FLAG) -c $(CFILES1)
+	gcc $(FLAG) -c $(CFILES1)
 	gcc $(FLAG) -c $(CFILES2)
-#	gcc -L ./libft/ -lft -o $(NAME1) $(OBJ1)
+	gcc -L ./libft/ -lft -o $(NAME1) $(OBJ1)
 	gcc -L ./libft/ -lft -o $(NAME2) $(OBJ2)
 
 clean:
