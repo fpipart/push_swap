@@ -6,30 +6,36 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:14:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/11 19:05:41 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 13:04:47 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		find_segment(t_stack *a, int seg, int in_seg)
+int		find_segment(t_stack *a, int seg, t_disp d)
 {
 	t_stack	*tmp;
 	int		min;
+	int		in_seg;
 
-	min = min_value(a);
+	in_seg = 0;
 	if (a)
 	{
+		min = min_value(a);
 		tmp = a->next;
-		
 		while (tmp != a)
 		{
 			if (min + seg >= tmp->data)
 				in_seg++;
-			if (in_seg >= seg)
+			if (in_seg >= d.size_a / 10)
+			{
+	//	printf("min_value = %d, in_seg = %d, seg = %d\n", min, in_seg, seg);
+	//	printf("min + seg = %d\n", min + seg);
 				return (min + seg);
+			}
+			tmp = tmp->next;
 		}
-		find_segment(a, seg * 2, in_seg);
+		return (find_segment(a, seg * 5 + 10, d));
 	}
 	return (0);
 }
@@ -52,7 +58,6 @@ int		closest_min_pos_next(t_stack *a, int mins)
 			i++;
 			tmp = tmp->next;
 		}
-		//printf("min = %d, pos = %d\n", min, pos);
 	}
 	return (-1);
 }
@@ -75,7 +80,6 @@ int		closest_min_pos_prev(t_stack *a, int mins)
 			i++;
 			tmp = tmp->prev;
 		}
-		//printf("min = %d, pos = %d\n", min, pos);
 	}
 	return (-1);
 }
@@ -91,11 +95,10 @@ void	push_next(t_stack **a, t_stack **b, t_disp *d)
 		max_position(*b) <= (*d).size_b / 2 ? rb(a, b, *d) : rrb(a, b, *d);
 }
 
-int		seg_selection_sort(t_stack **a, t_stack **b, t_disp d)
+int		seg_selection_sort(t_stack **a, t_stack **b, t_disp d, int end)
 {
-	int	mins;
+	int mins;
 
-	mins = find_segment(*a, d.size_a / 10, d.size_a / 10);
 	if (d.verbose)
 		print_stack_state(*a, *b, d);
 	if (d.phase == 2 && !*b)
@@ -104,15 +107,20 @@ int		seg_selection_sort(t_stack **a, t_stack **b, t_disp d)
 		push_next(a, b, &d);
 	else if (ps_is_sort(*a) && min_value(*a) > max_value(*b))
 		d.phase = 2;
-	else if (closest_min_pos_next(*a, mins) == 0)
+	else
 	{
-		pb(a, b, d);
-		d.size_b++;
+		mins = find_segment(*a, d.size_a / 10, d);
+		if (closest_min_pos_next(*a, mins) == 0)
+		{
+			pb(a, b, d);
+			d.size_b++;
+			d.size_a--;
+		}
+		else if (closest_min_pos_next(*a, mins) <= closest_min_pos_prev(*a, mins))
+			ra(a, b, d);
+		else if (closest_min_pos_next(*a, mins) > closest_min_pos_prev(*a, mins))
+			rra(a, b, d);
 	}
-	else if (closest_min_pos_next(*a, mins) <= closest_min_pos_prev(*a, mins))
-		ra(a, b, d);
-	else if (closest_min_pos_next(*a, mins) > closest_min_pos_prev(*a, mins))
-		rra(a, b, d);
-	seg_selection_sort(a, b, d);
+	return (seg_selection_sort(a, b, d, end));
 	return (0);
 }
