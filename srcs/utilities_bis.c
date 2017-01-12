@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:43:42 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 17:38:51 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 18:23:20 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ void	ps_delstack(t_stack **a)
 	t_stack *lst1;
 	t_stack *lst2;
 
-	lst1 = *a;
-	while (lst1 != (*a)->prev)
+	lst1 = (*a)->next;
+	while (lst1 != (*a))
 	{
 		lst2 = lst1->next;
 		free(lst1);
 		lst1 = lst2;
 	}
-	free((*a)->prev);
+	free((*a));
 	*a = NULL;
 }

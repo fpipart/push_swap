@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 16:30:44 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/04 16:37:18 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:06:39 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int		ft_atoi_checker(char *str, char **error)
 		res = res + str[i] - '0';
 		i++;
 	}
-	if (res != 0 && !str[i])
+	if (!str[i])
 		*error = NULL;
 	else
-		*error = ft_strdup("error");
+		*error = "error";
 	return (res * sgn);
 }

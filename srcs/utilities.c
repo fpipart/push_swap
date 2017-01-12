@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:07:45 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/11 15:11:43 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:47:33 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ t_stack	*fill_tab(int argc, char **argv, t_disp *d)
 	while ((i > 0 || (i >= 0 && argc == 2)) && argv)
 	{
 		if (((i == 1 && argc > 2) || i == 0) && ft_strequ(argv[i], "-v"))
-			d->verbose = ft_strequ(argv[i], "-v");
+			d->verbose = 1;
 		else if (!check_doublons(&x, ft_atoi_checker(argv[i], &error), a))
 			return (NULL);
 		else
 			ps_addelem(&a, x);
-		if (ft_strequ(error, "error") == 1 && ft_strequ(argv[i], "-v"))
+		if (ft_strequ(error, "error") == 1 && !ft_strequ(argv[i], "-v"))
 			return (NULL);
 		i--;
 	}

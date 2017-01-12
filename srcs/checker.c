@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:03:59 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 17:16:50 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/12 19:51:09 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	call_rule(char *rule, t_stack **a, t_stack **b, t_rules op[11])
 			if (!op[i].f(a, b, d))
 				return (0);
 			return (1);
-			//return (op[i].f(a, b));
 		}
 		i++;
 	}
@@ -44,8 +43,6 @@ static int	extract_rules(t_stack *a, t_stack *b)
 	rules(&op);
 	while (get_next_line(0, &line))
 	{
-		if (ft_strequ(line, ""))
-			break ;
 		if (!call_rule(line, &a, &b, op))
 			return (-1);
 	}
@@ -73,9 +70,6 @@ int		main(int argc, char **argv)
 			ps_error();
 	if (a)
 	{
-/*		printf("%5d%5d%5d%5d\n", a->data, a->next->data, a->next->next->data, 
-				stack_size(&a));
-*/		//print_stack(a);
 		result = extract_rules(a, b);
 		if (result == -1)
 			ps_error();
