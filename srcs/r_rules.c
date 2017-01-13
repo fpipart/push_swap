@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/06 17:38:21 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 15:45:51 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:03:08 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rotate(t_stack **stack)
 {
-	(*stack) =(*stack)->next;
+	(*stack) = (*stack)->next;
 }
 
 int		ra(t_stack **a, t_stack **b, t_disp d)

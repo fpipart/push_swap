@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 18:07:45 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 19:47:33 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:00:09 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**fill_with_strsplit(char **argv, int *i)
 	char **tab;
 
 	tab = ft_strsplit(argv[1], ' ');
-	*i = ft_wordcount(argv[1], ' ') - 1; 
+	*i = ft_wordcount(argv[1], ' ') - 1;
 	if (*i == 0 && ft_strequ("-v", tab[0]))
 		return (NULL);
 	return (tab);
@@ -48,7 +48,8 @@ t_stack	*fill_tab(int argc, char **argv, t_disp *d)
 			return (NULL);
 		else
 			ps_addelem(&a, x);
-		if (ft_strequ(error, "error") == 1 && !ft_strequ(argv[i], "-v"))
+		if ((ft_strequ(error, "error") == 1) || (ft_strequ(argv[i], "-v")
+				&& ((i > 1 && argc > 2) || (i > 0 && argc == 2))))
 			return (NULL);
 		i--;
 	}

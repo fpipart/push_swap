@@ -6,13 +6,13 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:14:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 16:39:31 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:08:22 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	push_next(t_stack **a, t_stack **b, t_disp *d)
+static void	push_next(t_stack **a, t_stack **b, t_disp *d)
 {
 	if (max_position(*b) <= (*d).size_b / 2 && max_position(*b) != 0)
 	{
@@ -25,7 +25,7 @@ void	push_next(t_stack **a, t_stack **b, t_disp *d)
 	d->size_b--;
 }
 
-void	first_sort(t_stack **a, t_stack **b, t_disp *d)
+static void	first_sort(t_stack **a, t_stack **b, t_disp *d)
 {
 	int mins;
 
@@ -45,7 +45,7 @@ void	first_sort(t_stack **a, t_stack **b, t_disp *d)
 	d->size_a--;
 }
 
-int		seg_selection_sort(t_stack **a, t_stack **b, t_disp d)
+int			seg_selection_sort(t_stack **a, t_stack **b, t_disp d)
 {
 	while (d.phase != 2 || *b)
 	{

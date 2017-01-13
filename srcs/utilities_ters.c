@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 16:31:24 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 16:46:44 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:03:53 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		closest_min_pos_prev(t_stack *a, int mins)
 	int		i;
 
 	i = 1;
-	if		(a)
+	if (a)
 	{
 		if (a->data <= mins)
 			return (0);

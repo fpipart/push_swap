@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 16:49:01 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 16:38:37 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:19:22 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-
-typedef struct		s_tab
-{
-	int				*a;
-	int				*b;
-	int				size;
-}					t_tab;
 
 typedef struct		s_stack
 {
@@ -44,17 +37,12 @@ typedef struct		s_rules
 	int				(*f)(t_stack **a, t_stack **b, t_disp d);
 }					t_rules;
 
-int					push_swap(t_stack *a, t_stack *b, t_disp d);
 int					selection_sort(t_stack **a, t_stack **b, t_disp d);
-
-/*
- *		seg_selection_sort.c
- * */
-
 int					seg_selection_sort(t_stack **a, t_stack **b, t_disp d);
 
-int					ft_atoi_checker(char *str, char **error);
-void				rules(t_rules **conv);
+/*
+ **		stack_utilities.c
+*/
 
 t_stack				*ps_firstelem(int data);
 int					ps_addelem(t_stack **stack, int data);
@@ -63,8 +51,8 @@ void				print_stack(t_stack *stack);
 int					ps_is_sort(t_stack *a);
 
 /*
- *		utilities.c
- * */
+ **		utilities.c
+*/
 
 void				ps_error(void);
 char				**fill_with_strsplit(char **argv, int *i);
@@ -72,10 +60,9 @@ void				print_stack_state(t_stack *a, t_stack *b, t_disp d);
 int					check_doublons(int *x, int neww, t_stack *a);
 t_stack				*fill_tab(int argc, char **argv, t_disp *d);
 
-
 /*
- *		utilities_bis.c
- * */
+ **		utilities_bis.c
+*/
 
 int					min_value(t_stack *a);
 int					min_position(t_stack *a);
@@ -84,13 +71,16 @@ int					max_position(t_stack *a);
 void				ps_delstack(t_stack **a);
 
 /*
- *		utilities_ters.c
- * */
+ **		utilities_ters.c
+*/
 
 int					find_segment(t_stack *a, int seg, t_disp d);
 int					closest_min_pos_next(t_stack *a, int mins);
 int					closest_min_pos_prev(t_stack *a, int mins);
 
+int					ft_atoi_checker(char *str, char **error);
+
+void				rules(t_rules **conv);
 
 void				swap(t_stack **stack);
 int					sa(t_stack **a, t_stack **b, t_disp d);

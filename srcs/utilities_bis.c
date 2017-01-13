@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 16:43:42 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 18:23:20 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:05:36 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int		min_value(t_stack *a)
 	if (a)
 	{
 		tmp = a->next;
-		min = a->data; 
+		min = a->data;
 		while (tmp != a)
 		{
 			if (tmp->data < min)
 				min = tmp->data;
-			tmp =tmp->next;
+			tmp = tmp->next;
 		}
 		return (min);
 	}
@@ -40,7 +40,7 @@ int		max_value(t_stack *a)
 	if (a)
 	{
 		tmp = a->next;
-		max = a->data; 
+		max = a->data;
 		while (tmp != a)
 		{
 			if (tmp->data > max)
@@ -70,7 +70,7 @@ int		max_position(t_stack *a)
 			if (tmp->data > max)
 			{
 				pos = i;
-				max= tmp->data;
+				max = tmp->data;
 			}
 			i++;
 			tmp = tmp->next;
@@ -104,7 +104,7 @@ int		min_position(t_stack *a)
 		}
 	}
 	return (pos);
-}		
+}
 
 void	ps_delstack(t_stack **a)
 {

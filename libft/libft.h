@@ -6,14 +6,14 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 13:42:32 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/05 14:07:09 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:23:54 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 10 
+# define BUFF_SIZE 10
 
 # include <string.h>
 # include <unistd.h>
@@ -33,20 +33,19 @@ typedef struct		s_gnl
 	int				i;
 }					t_gnl;
 
-
 typedef	enum		e_flag
 {
-		flag_parse_alt = 1 << 0,
-		flag_0 = 1 << 1,
-		flag_left = 1 << 2,
-		flag_pos = 1 << 3,
-		flag_space = 1 << 4,
-		flag_j_conv = 1 << 5,
-		flag_z_conv = 1 << 6,
-		flag_h_conv = 1 << 8,
-		flag_hh_conv = 1 << 7,
-		flag_l_conv = 1 << 9,
-		flag_ll_conv = 1 << 10,
+	flag_parse_alt = 1 << 0,
+	flag_0 = 1 << 1,
+	flag_left = 1 << 2,
+	flag_pos = 1 << 3,
+	flag_space = 1 << 4,
+	flag_j_conv = 1 << 5,
+	flag_z_conv = 1 << 6,
+	flag_h_conv = 1 << 8,
+	flag_hh_conv = 1 << 7,
+	flag_l_conv = 1 << 9,
+	flag_ll_conv = 1 << 10,
 }					t_flag;
 
 typedef struct		s_flag_content
@@ -65,7 +64,7 @@ typedef	struct		s_display
 typedef struct		s_fun
 {
 	char			*s;
-	int(*f)(va_list ap, char type, t_display d);
+	int				(*f)(va_list ap, char type, t_display d);
 }					t_fun;
 
 void				*ft_memset(void *b, int c, size_t len);
@@ -163,8 +162,8 @@ int					ft_is_sort(int *a, int size);
 int					get_next_line(const int fd, char **line);
 
 /*
- *		PRINTF
- */
+ **		PRINTF
+*/
 
 int					ft_printf(const char *str, ...);
 int					printf_next(const char *str, va_list ap, int *tot);

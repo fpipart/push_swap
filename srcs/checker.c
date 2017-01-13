@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:03:59 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/12 19:51:09 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 11:06:29 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	extract_rules(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack *b;
