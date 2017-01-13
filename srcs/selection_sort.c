@@ -6,7 +6,7 @@
 /*   By: fpipart <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/09 14:34:13 by fpipart           #+#    #+#             */
-/*   Updated: 2017/01/13 12:26:24 by fpipart          ###   ########.fr       */
+/*   Updated: 2017/01/13 12:36:03 by fpipart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static int	sort_three_2(t_stack **a, t_stack **b, t_disp d, int a3)
 		ra(a, b, d);
 	return (1);
 }
-
 
 int			sort_three(t_stack **a, t_stack **b, t_disp d)
 {
